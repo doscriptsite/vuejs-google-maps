@@ -15,11 +15,10 @@ Vue.use(VueGoogleMap, {
   load: {
     apiKey: process.env.VUE_APP_GOOGLE_APIKEY,
     libraries: [
-      'places',
-      'visualization'
+      'places'
     ],
-    language: 'kh',
-    region: 'KH'
+    language: 'en',
+    region: 'en-US'
   }
 })
 
@@ -30,8 +29,8 @@ new Vue({
         zoom: 8,
         minZoom: 3,
         center: {
-          lat: 41.89193,
-          lng: 12.51133
+          lat: 37.09024,
+          lng: -95.712891
         }
       }
     }

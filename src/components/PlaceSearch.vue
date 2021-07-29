@@ -2,7 +2,7 @@
 
   <div class="simple-map">
 
-    <google-map-autocomplete ref="Place" @place-changed="onPlaceChanged" />
+    <google-map-autocomplete ref="Place" @place-changed="onPlaceChanged" class="autocomplete"/>
 
     <google-map
       id="map"
@@ -11,10 +11,7 @@
       :options="mapOptions"
       @idle="onIdle">
 
-      <div slot="visible">
-        <!-- <google-map-autocomplete @place-changed="onPlaceChanged" /> -->
-      </div>
-
+      <google-map-marker v-if="place" :clickable="false" :draggable="false" :position="center" label="Reference Position" @dragend="getCoordinates"/>
     </google-map>
 
   </div>
@@ -24,19 +21,46 @@
 <script>
 export default {
   data () {
-    const mapOptions = this.$root.defaultMapOptions
     return {
-      center: mapOptions.center,
-      mapOptions: mapOptions
+      center: {
+        lat: 37.09024,
+        lng: -95.712891
+      },
+      mapOptions: {
+        zoom: 8,
+        minZoom: 2,
+        mapTypeControl: false,
+        fullscreenControl: false,
+        zoomControl: true,
+        streetViewControl: false,
+        fields: ['geometry', 'address_components']
+      },
+      place: null,
     }
   },
   methods: {
-    // TODO: Finish the example
-    onPlaceChanged (data) {},
+    onPlaceChanged (data) {
+      console.log(data);
+      this.place = data;
+      this.center = {
+        lat: data.geometry.location.lat(),
+        lng: data.geometry.location.lng()
+      };
+      console.log(this.center);
+      this.mapOptions.zoom = 18;
+    },
     onIdle (map) {
       this.mapBounds = map.getBounds()
       this.$refs.Place.setBounds(this.mapBounds)
-    }
+    },
+    getCoordinates (data) {
+      console.log(data);
+    },
   }
 }
 </script>
+<style>
+.autocomplete {
+  width: 600px;
+}
+</style>

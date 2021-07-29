@@ -25,7 +25,7 @@
             </md-list>
         </md-app-drawer>
 
-        <md-app-content>
+        <md-app-content style="height: 100%;">
             <router-view/>
         </md-app-content>
     </md-app>
