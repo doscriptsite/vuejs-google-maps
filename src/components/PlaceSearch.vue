@@ -27,13 +27,12 @@ export default {
         lng: -95.712891
       },
       mapOptions: {
-        zoom: 8,
+        zoom: 3,
         minZoom: 2,
         mapTypeControl: false,
         fullscreenControl: false,
         zoomControl: true,
-        streetViewControl: false,
-        fields: ['geometry', 'address_components']
+        streetViewControl: false
       },
       place: null,
     }
@@ -61,6 +60,10 @@ export default {
 </script>
 <style>
 .autocomplete {
+  position: absolute;
+  top: 20px;
   width: 600px;
+  left: 100px;
+  z-index: 999;
 }
 </style>
