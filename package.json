@@ -1,7 +1,7 @@
 {
   "name": "vuejs-google-maps-part",
   "description": "A set of Google Map components for VueJs",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "main": "./dist/vuejs-google-maps-part.umd.js",
   "types": "types/index.d.ts",
